@@ -1,0 +1,32 @@
+name: Upload Packages
+
+on:
+  push:
+    branches:
+      - main  # adjust to your main branch name
+
+jobs:
+  upload-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Add steps to build your packages here
+      # For example, if you're using Maven, you might run `mvn clean install`
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Publish Package to GitHub Packages
+        run: mvn --batch-mode --file pom.xml clean deploy -DskipTests=true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # working-directory: ${{ github.workspace }}
+
