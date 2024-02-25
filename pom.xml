@@ -23,8 +23,8 @@
 			<release>
 				<enabled>true</enabled>
 			</release>
-			<snapshot>
-				<enabled>true</enabled
+			<snapshott>
+				<enabled>true</enabled>
 			</snapshot>
 		</repository>
 	</repositories>
