@@ -21,8 +21,8 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+      # - name: Build with Maven
+      #   run: mvn -B package --file pom.xml
 
       - name: Publish Package to GitHub Packages
         run: mvn --batch-mode --file pom.xml clean deploy -DskipTests=true
